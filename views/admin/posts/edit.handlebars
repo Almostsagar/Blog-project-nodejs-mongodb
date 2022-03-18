@@ -1,0 +1,53 @@
+<div class="container">
+    <h1>Edit post</h1>
+    <div class="p-4 row">
+        <div class="col-md-10">
+            <form action="/admin/posts/edit/{{post._id}}?newMethod=PUT" method="post">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" name="title" placeholder="Enter the title" required
+                        value="{{post.title}}">
+                </div>
+                {{!-- <div class="form-group">
+                    <label for="file">File Upload</label>
+                    <input type="file" class="form-control" id="file" name="uploadedFile" required>
+                </div> --}}
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select name="status" id="status" class="form-control">
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                        <option value="draft">Draft</option>
+                    </select>
+                </div>
+                <div class="form-check">
+                    <label for="allowComments" class="ml-4">
+                        <input type="checkbox" class="form-check-input" name="allowComments" id="allowComments">
+                        Allow Comments
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select name="category" id="category" class="form-control">
+                        {{#each categories}}
+                        {{!-- {{#select post.category}} --}}
+                        <option value="{{_id}}">{{title}}</option>
+                        {{!-- {{/select}} --}}
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Content</label>
+                    <textarea type="description" class="form-control" rows="10" id="description"
+                        placeholder="Enter your content here.." name="description"
+                        required>{{post.description}}</textarea>
+                </div>
+                <button class="btn btn-outline-success btn-lg" type="submit">Edit Post</button>
+
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
