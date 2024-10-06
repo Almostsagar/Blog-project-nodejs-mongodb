@@ -35,7 +35,10 @@
                 <div class="media mb-4">
                     <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
                     <div class="media-body">
-                        <h5 class="mt-0">{{user.firstname}} {{user.lastname}}</h5>
+                        <div class="d-flex justify-content-between">
+                            <h6 class="mt-0">{{user.firstname}} {{user.lastname}}</h6>
+                            <h6>{{formatDate date}}</h6>
+                        </div>
                         {{body}}
                     </div>
                 </div>
@@ -46,7 +49,10 @@
             <div class="media mb-4">
                 <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
                 <div class="media-body">
-                    <h5 class="mt-0">{{user.firstname}} {{user.lastname}}</h5>
+                    <div class="d-flex justify-content-between">
+                        <h6 class="mt-0">{{user.firstname}} {{user.lastname}}</h6>
+                        <h6>{{formatDate date}}</h6>
+                    </div>
                     {{body}}
                 </div>
             </div>
