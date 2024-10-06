@@ -102,8 +102,13 @@ module.exports.submitComment = (req, res) => {
                 post.comments.push(newComment)
                 post.save().then(savedPost => {
                     newComment.save().then(savedComment => {
-                        req.flash('success-message', 'Your comment was submitted for review..')
-                        res.redirect(`/post/${post._id}`)
+                        if(savedPost.commentsApprovalRequired){
+                            req.flash('success-message', 'Your comment was submitted for review..')
+                            res.redirect(`/post/${post._id}`)
+                          } else{
+                            req.flash('success-message', 'Comment submitted.. ')
+                            res.redirect(`/post/${post._id}`)
+                          }   
                     })
                 })
             })

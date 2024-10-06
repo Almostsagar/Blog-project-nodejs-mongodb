@@ -72,6 +72,11 @@ hbs2.handlebars.registerHelper('substr', function (length, context) {
         return context;
     }
 });
+
+hbs2.handlebars.registerHelper('formatDate', function(date) {
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    return new Date(date).toLocaleDateString('en-GB', options).replace(/\//g, '/');
+});
 // Method override middleware
 app.use(methodOverride('newMethod'))
 
