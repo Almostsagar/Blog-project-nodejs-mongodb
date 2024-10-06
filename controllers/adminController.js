@@ -15,6 +15,7 @@ module.exports.getPosts = (req, res) => {
 };
 module.exports.submitPosts = (req, res) => {
     const commentsAllowed = req.body.allowComments ? true : false
+    const commentsApprovalRequired = req.body.commentsApprovalRequired ? true : false;
 
     // Check for the input file
     let filename = ''
@@ -34,6 +35,7 @@ module.exports.submitPosts = (req, res) => {
         status: req.body.status,
         description: req.body.description,
         allowComments: commentsAllowed,
+        commentsApprovalRequired: commentsApprovalRequired,
         category: req.body.category,
         file: `/uploads/${filename}`
     })
@@ -60,12 +62,14 @@ module.exports.editPosts = (req, res) => {
 };
 module.exports.editPostSubmit = (req, res) => {
     const commentsAllowed = req.body.allowComments ? true : false;
+    const commentsApprovalRequired = req.body.commentsApprovalRequired ? true : false;
     const id = req.params.id;
     Post.findById(id)
         .then(post => {
             post.title = req.body.title;
             post.status = req.body.status;
             post.allowComments = commentsAllowed;
+            post.commentsApprovalRequired = commentsApprovalRequired;
             post.description = req.body.description;
             post.category = req.body.category;
             post.save().then(updatePost => {

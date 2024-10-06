@@ -33,6 +33,10 @@ const postSchema = new Schema({
         type: Boolean,
         default: false
     },
+    commentsApprovalRequired: {
+        type: Boolean,
+        default: true
+    },
     file: {
         type: String,
         default: ''
